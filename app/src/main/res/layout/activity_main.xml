@@ -7,85 +7,103 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/a"
-        android:layout_width="wrap_content"
+        android:id="@+id/edita"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="A"
         android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/b"
-        android:layout_width="wrap_content"
+        android:id="@+id/editb"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="B"
         android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/a" />
+        app:layout_constraintTop_toBottomOf="@+id/edita" />
 
     <EditText
-        android:id="@+id/c"
-        android:layout_width="wrap_content"
+        android:id="@+id/editc"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="C"
         android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b" />
+        app:layout_constraintTop_toBottomOf="@+id/editb" />
 
     <EditText
-        android:id="@+id/alfa"
-        android:layout_width="wrap_content"
+        android:id="@+id/editalfa"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="alfa"
         android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/c" />
+        app:layout_constraintTop_toBottomOf="@+id/editc" />
 
     <EditText
-        android:id="@+id/beta"
-        android:layout_width="wrap_content"
+        android:id="@+id/editbeta"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="beta"
         android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alfa" />
+        app:layout_constraintTop_toBottomOf="@+id/editalfa" />
 
     <EditText
-        android:id="@+id/gamma"
-        android:layout_width="wrap_content"
+        android:id="@+id/editgamma"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="gamma"
         android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/calculatebutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/beta" />
+        app:layout_constraintTop_toBottomOf="@+id/editbeta" />
 
     <arte921.maffs.CanvasView
-        android:id="@+id/canvasView"
+        android:id="@+id/plotcanvas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -94,8 +112,25 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gamma" />
+        app:layout_constraintTop_toBottomOf="@+id/editgamma"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/calculatebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="calculate"
+        android:text="calculate"
+        app:layout_constraintBottom_toTopOf="@+id/plotcanvas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editbeta" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
