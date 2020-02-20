@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -15,11 +16,11 @@ class CanvasView(context: Context, attrs: AttributeSet): View(context, attrs) {
     private val plotColor = ResourcesCompat.getColor(resources,R.color.plotColor,null)
     private val angleTextColor = ResourcesCompat.getColor(resources,R.color.angleTextColor,null)
     private val lengthTextColor = ResourcesCompat.getColor(resources,R.color.angleTextColor,null)
-    private var nmarigin: Double = 10.0
-    private var smarigin: Double = 10.0
-    private var emarigin: Double = 10.0
-    private var wmarigin: Double = 10.0
-    private var totalw: Double = 1.0
+    private var nmarigin: Double = 0.0
+    private var smarigin: Double = 0.0
+    private var emarigin: Double = 0.0
+    private var wmarigin: Double = 0.0
+    private var cosadj: Double = 0.0
 
     private var res: Double = 1.0
 
@@ -54,15 +55,24 @@ class CanvasView(context: Context, attrs: AttributeSet): View(context, attrs) {
 
     override fun onDraw(canvas: Canvas){
         super.onDraw(canvas)
+        reset()
 
-        if(cos(mt.alfa) < 0) wmarigin -= cos(mt.alfa)
+        cosadj = if(cos(mt.alfa) < 0) -cos(mt.alfa) * mt.b else 0.0
 
+        res = if(sin(mt.alfa)/(mt.c+cosadj) < ((maxy-nmarigin-smarigin)/(maxx-wmarigin-emarigin))) maxx/(mt.c+cosadj) else maxy/sin(mt.alfa)
 
-        res = if(sin(mt.alfa)/(wmarigin + mt.c + emarigin) < ((maxy-2*wmarigin)/(maxx-2*wmarigin))) maxx/(wmarigin + mt.c + emarigin) else maxy/sin(mt.alfa)
+        wmarigin += cosadj*res
+        Log.i("cosadj: ",wmarigin.toString())
 
         canvas.drawLine(wmarigin.toFloat(),(maxy-nmarigin).toFloat(),(mt.c * res + wmarigin).toFloat(),(maxy-nmarigin).toFloat(),plotPaint)
-
         canvas.drawLine(wmarigin.toFloat(),(maxy-nmarigin).toFloat(),(wmarigin + cos(mt.alfa)*mt.b*res).toFloat(),(maxy-sin(mt.alfa)*mt.b*res).toFloat(),plotPaint)
+        //canvas.drawLine((wmarigin + cos(mt.alfa)*mt.b*res).toFloat(),(maxy-sin(mt.alfa)*mt.b*res).toFloat(),(mt.c * res + wmarigin).toFloat(),(maxy-nmarigin).toFloat(),plotPaint)
+    }
 
+    fun reset(){
+        nmarigin = 10.0
+        smarigin = 10.0
+        emarigin = 10.0
+        wmarigin = 10.0
     }
 }
