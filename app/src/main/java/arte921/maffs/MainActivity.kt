@@ -21,6 +21,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun calculate(view: View){
+
+        mt = triangle(
+            if(edita.text.toString().trim().isNotBlank() && edita.text.toString().trim().toDouble() > 0) edita.text.toString().trim().toDouble()/180 * PI else -1.0,
+            if(editb.text.toString().trim().isNotBlank() && editb.text.toString().trim().toDouble() > 0) editb.text.toString().trim().toDouble()/180 * PI else -1.0,
+            if(editc.text.toString().trim().isNotBlank() && editc.text.toString().trim().toDouble() > 0) editc.text.toString().trim().toDouble()/180 * PI else -1.0,
+            if(editalfa.text.toString().trim().isNotBlank() && editalfa.text.toString().trim().toDouble() > 0) editalfa.text.toString().trim().toDouble()/180 * PI else -1.0,
+            if(editbeta.text.toString().trim().isNotBlank() && editbeta.text.toString().trim().toDouble() > 0) editbeta.text.toString().trim().toDouble()/180 * PI else -1.0,
+            if(editgamma.text.toString().trim().isNotBlank() && editgamma.text.toString().trim().toDouble() > 0) editgamma.text.toString().trim().toDouble()/180 * PI else -1.0)
+
         mt.calculate()
 
 
@@ -32,5 +41,14 @@ class MainActivity : AppCompatActivity() {
         editgamma.setText((mt.gamma / PI * 180).toString())
 
         plotcanvas.invalidate()
+    }
+
+    fun clear(view: View){
+        edita.text.clear()
+        editb.text.clear()
+        editc.text.clear()
+        editalfa.text.clear()
+        editbeta.text.clear()
+        editgamma.text.clear()
     }
 }

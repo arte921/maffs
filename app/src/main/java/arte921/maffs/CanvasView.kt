@@ -61,7 +61,7 @@ class CanvasView(context: Context, attrs: AttributeSet): View(context, attrs) {
         alfacosadj = if(cos(mt.alfa) < 0) -cos(mt.alfa) * mt.b else 0.0
         betacosadj = if(cos(mt.beta) < 0) -cos(mt.beta) * mt.a else 0.0
 
-        res = if(sin(mt.alfa)/(mt.c+alfacosadj+betacosadj) < ((maxy-nmarigin-smarigin)/maxx)) maxx/(mt.c+alfacosadj+betacosadj) else maxy/sin(mt.alfa)
+        res = if(sin(mt.alfa)/(mt.c+alfacosadj+betacosadj) < ((maxy-nmarigin-smarigin)/(maxx-emarigin-wmarigin))) (maxx-emarigin-wmarigin)/(mt.c+alfacosadj+betacosadj) else maxy/sin(mt.alfa)
 
         wmarigin += alfacosadj*res
         Log.i("cosadj: ",wmarigin.toString())
