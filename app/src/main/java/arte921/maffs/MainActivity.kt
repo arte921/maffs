@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //public val edita: EditText = findViewById(R.id.edita)
+
     }
 
     fun calculate(view: View){
@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         edita.setText(mt.a.toString())
         editb.setText(mt.b.toString())
         editc.setText(mt.c.toString())
-        editalfa.setText((mt.alfa / PI * 360).toString())
-        editbeta.setText((mt.beta / PI * 360).toString())
-        editgamma.setText((mt.gamma / PI * 360).toString())
+        editalfa.setText((mt.alfa / PI * 180).toString())
+        editbeta.setText((mt.beta / PI * 180).toString())
+        editgamma.setText((mt.gamma / PI * 180).toString())
 
         plotcanvas.invalidate()
     }
